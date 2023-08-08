@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Javascript Table Manipulation</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+        table {
+            margin: 25px auto;
+        }
+
+        td {
+            width: 5%;
+            height: 25px;
+            text-align: center;
+            border: 1px solid gray;
+            color: rgb(50, 50, 50);
+        }
+    </style>
+</head>
+
+<body>
+
+    <script>
+
+        var table = document.createElement("table");
+
+        for (var i = 1; i <= 10; i++) {
+
+            var row = table.insertRow();
+
+            for (var j = 1; j <= 10; j++) {
+
+                var cell = row.insertCell();
+
+                var number = (i - 1) * 10 + j;
+
+                cell.textContent = number;
+
+                if (number % 2 == 0) {
+                    cell.classList.add("even");
+                } else {
+                    cell.classList.add("odd");
+                }
+
+                cell.addEventListener("mouseover", function () {
+                    this.style.backgroundColor = this.classList.contains("even") ? "#77DD77" : "#FAA0A0";
+                });
+
+                cell.addEventListener("mouseout", function () {
+                    this.style.backgroundColor = "";
+                });
+
+            }
+        }
+
+        document.body.appendChild(table);
+    </script>
+
+</body>
+
+</html>
